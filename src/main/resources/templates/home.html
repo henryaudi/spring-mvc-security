@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Spring Project HomePage</title>
@@ -12,6 +13,26 @@
     Welcome to the Spring Project HomePage!
     </p>
 
+    <hr>
+
+    <p>
+        User: <span sec:authentication="principal.username"></span>
+        <br><br>
+        Role: <span sec:authentication="principal.authorities"></span>
+    </p>
+    <hr>
+
+    <p>
+        <a th:href="@{/leaders}">Leadership Meeting</a>
+        (Only for manager peeps)
+    </p>
+
+    <p>
+        <a th:href="@{/systems}">IT Systems Meeting</a>
+        (Only for admin peeps)
+    </p>
+
+    <hr>
     <!-- Add a logout button -->
     <form action="#" th:action="@{/logout}" method="POST">
 
