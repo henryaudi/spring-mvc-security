@@ -22,15 +22,19 @@
     </p>
     <hr>
 
-    <p>
-        <a th:href="@{/leaders}">Leadership Meeting</a>
-        (Only for manager peeps)
-    </p>
+    <div sec:authorize="hasRole('MANAGER')">
+        <p>
+            <a th:href="@{/leaders}">Leadership Meeting</a>
+            (Only for manager peeps)
+        </p>
+    </div>
 
-    <p>
-        <a th:href="@{/systems}">IT Systems Meeting</a>
-        (Only for admin peeps)
-    </p>
+    <div sec:authorize="hasRole('ADMIN')">
+        <p>
+            <a th:href="@{/systems}">IT Systems Meeting</a>
+            (Only for admin peeps)
+        </p>
+    </div>
 
     <hr>
     <!-- Add a logout button -->
